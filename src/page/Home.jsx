@@ -7,6 +7,7 @@ import "./home.scss";
 const User = () => {
   const [formValue, setFormValue] = useState("");
   const [toggle, setToggle] = useState("");
+  const [error, setError] = useState("")
   const [searchInput, setSearchInput] = useState("");
   const [filteredResult, setFilteredResult] = useState([]);
   const [user, setUser] = useState([]);
@@ -23,6 +24,7 @@ const User = () => {
 
   const fetchData = async (e) => {
     e.preventDefault();
+    e.target.reset()
     try {
       const formData = { ...formValue };
       console.log(formData);
@@ -30,10 +32,10 @@ const User = () => {
         "https://randomuser.me/api/?page=9&results=390&seed=abc"
       );
       const result = randomuser.data.results;
-      console.log(result);
       setUser(result);
     } catch (error) {
-      console.log(error);
+      const err = error.message;
+      setError(err)
     }
   };
 
@@ -69,14 +71,10 @@ const User = () => {
   const indexofLastUser = currentPage * userPerPage;
   const indexOfFirstUser = indexofLastUser - userPerPage;
   const currentUser = user.slice(indexOfFirstUser, indexofLastUser);
-  const filter = filteredResult.slice(indexOfFirstUser, indexofLastUser);
-
-  // if (!user) return null;
 
   return (
     <div className="home__container">
       <div className="home__wrapper">
-        <div className="sort__fiter__box"></div>
         <div className="form__wrapper">
           <div className="search__filter">
             <label htmlFor="">
@@ -110,9 +108,10 @@ const User = () => {
             </button>
           </form>
         </div>
+         <h5 className="err">{error}</h5>
         <div className="output__wrapper">
           {searchInput.length > 1
-            ? filter.map((data, id) => (
+            ? filteredResult.map((data, id) => (
                 <RandomUser
                   key={id}
                   firstname={data.name.first}

@@ -53,8 +53,15 @@
           border: none;
           border-radius: 3px;
           padding: 5px 4px;
+          cursor: pointer;
         }
       }
+    }
+    h5 {
+      color: #fff;
+      text-align: center;
+      font-size: 23px;
+      font-weight: 300;
     }
   }
 }

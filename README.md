@@ -4,9 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The frontend development of a data analyst web app:
 
-1. Two predefined set of query to load daa
-2. You can also type queries in a text area to generate data
-3. Search and Filter input to filter through fetched data
+1. Two predefined set of query to load daa.
+2. You can also type queries in a text area to generate data.
+3. Search and Filter input to filter through fetched data by first name.
 4. Pagination to paginate a set of data per page.
 
 
@@ -46,5 +46,5 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser with
 
 ``` sh
-npm install
+npm start
 ```

@@ -1,0 +1,60 @@
+.home__container {
+  display: flex;
+  .home__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+    .form__wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 25px auto;
+      width: 40%;
+      .search__filter {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 18px;
+        label {
+          color: #fff;
+          font-size: 18px;
+          font-weight: 300;
+          text-align: center;
+        }
+        input[type="text"] {
+          border: none;
+          padding: 5px 8px;
+          outline: none;
+          border-radius: 3px;
+        }
+      }
+      .toggle_predefined {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 8px;
+        button {
+          padding: 5px 4px;
+          border: none;
+          border-radius: 2px;
+          margin-right: 12px;
+          cursor: pointer;
+        }
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        .SQLqueries {
+          border: none;
+          outline: none;
+          border-radius: 3px;
+          margin-bottom: 4px;
+        }
+        .fetch {
+          border: none;
+          border-radius: 3px;
+          padding: 5px 4px;
+        }
+      }
+    }
+  }
+}

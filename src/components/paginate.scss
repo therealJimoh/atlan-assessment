@@ -1,0 +1,16 @@
+.paginate {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 15px auto 25px auto;
+  .page-item {
+    margin-right: 5px;
+    flex-direction: row;
+    padding: 4px 15px;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}

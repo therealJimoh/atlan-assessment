@@ -7,7 +7,7 @@ import "./home.scss";
 const User = () => {
   const [formValue, setFormValue] = useState("");
   const [toggle, setToggle] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [filteredResult, setFilteredResult] = useState([]);
   const [user, setUser] = useState([]);
@@ -24,10 +24,8 @@ const User = () => {
 
   const fetchData = async (e) => {
     e.preventDefault();
-    e.target.reset()
+    e.target.reset();
     try {
-      const formData = { ...formValue };
-      console.log(formData);
       const randomuser = await axios.get(
         "https://randomuser.me/api/?page=9&results=390&seed=abc"
       );
@@ -35,7 +33,7 @@ const User = () => {
       setUser(result);
     } catch (error) {
       const err = error.message;
-      setError(err)
+      setError(err);
     }
   };
 
@@ -48,7 +46,6 @@ const User = () => {
           .toLowerCase()
           .includes(searchInput.toLowerCase());
       });
-      console.log(searchValue);
       setFilteredResult(filteredData);
     } else {
       setFilteredResult(user);
@@ -61,8 +58,6 @@ const User = () => {
       .toLowerCase()
       .includes(searchInput.toLowerCase());
   });
-
-  console.log(filteredData);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -87,10 +82,10 @@ const User = () => {
             />
           </div>
           <div className="toggle_predefined">
-            <button onClick={(e) => setToggle(e.target.innerHTML)}>
+            <button onClick={() => setToggle("select * from user data")}>
               SQLquery1
             </button>
-            <button onClick={(e) => setToggle(e.target.innerHTML)}>
+            <button onClick={() => setToggle("query user location")}>
               SQLquery2
             </button>
           </div>
@@ -108,31 +103,35 @@ const User = () => {
             </button>
           </form>
         </div>
-         <h5 className="err">{error}</h5>
+        <h5 className="err">{error}</h5>
         <div className="output__wrapper">
-          {searchInput.length > 1
-            ? filteredResult.map((data, id) => (
-                <RandomUser
-                  key={id}
-                  firstname={data.name.first}
-                  lastname={data.name.last}
-                  gender={data.gender}
-                  age={data.dob.age}
-                  city={data.location.city}
-                  state={data.location.state}
-                />
-              ))
-            : currentUser.map((data, id) => (
-                <RandomUser
-                  key={id}
-                  firstname={data.name.first}
-                  lastname={data.name.last}
-                  gender={data.gender}
-                  age={data.dob.age}
-                  city={data.location.city}
-                  state={data.location.state}
-                />
-              ))}
+          {searchInput.length > 1 ? (
+            filteredResult.map((data, id) => (
+              <RandomUser
+                key={id}
+                firstname={data.name.first}
+                lastname={data.name.last}
+                gender={data.gender}
+                age={data.dob.age}
+                city={data.location.city}
+                state={data.location.state}
+              />
+            ))
+          ) : searchInput.length < 1 ? (
+            currentUser.map((data, id) => (
+              <RandomUser
+                key={id}
+                firstname={data.name.first}
+                lastname={data.name.last}
+                gender={data.gender}
+                age={data.dob.age}
+                city={data.location.city}
+                state={data.location.state}
+              />
+            ))
+          ) : (
+            <h3>No search found.</h3>
+          )}
           <Pagination
             userPerPage={userPerPage}
             totalUser={user.length}

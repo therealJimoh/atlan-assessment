@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Pagination from "../components/Pagination";
 import RandomUser from "../components/RandomUser";

@@ -132,11 +132,15 @@ const User = () => {
           ) : (
             <h3>No search found.</h3>
           )}
-          <Pagination
-            userPerPage={userPerPage}
-            totalUser={user.length}
-            paginate={paginate}
-          />
+          {!searchInput.length > 1 ? (
+            <Pagination
+              userPerPage={userPerPage}
+              totalUser={user.length}
+              paginate={paginate}
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
